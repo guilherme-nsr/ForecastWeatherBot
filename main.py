@@ -2,6 +2,7 @@ import telebot
 import requests
 
 from exceptions.exceptions import LocationNotFoundError
+from util.time import Time
 
 BOT_TOKEN = "737147039:AAEFkaHm2H5HKCY0KUkfCwVz8Ldiqk-t4Dw"
 OPEN_WEATHER_API_KEY = "89d78c9a1488f4e270ff37e37d1e3f2e"
@@ -45,7 +46,9 @@ def translate_text(text, translation):
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, "Este bot pode lhe fornecer a previsão do tempo para diversos locais ao redor do mundo!")
-    print("Welcome message sent\n")
+
+    time = Time.get_time()
+    print("%s - Welcome message sent\n" % time)
 
 
 @bot.message_handler(commands=['tempo'])
@@ -61,7 +64,9 @@ def send_forecast(message):
                                                         min_temperature, max_temperature)
 
         bot.reply_to(message, "Tempo em %s:\n%s" % (location, forecast))
-        print("Forecast sent\nLocation: %s\n%s\n" % (location, forecast))
+
+        time = Time.get_time()
+        print("%s - Forecast sent\nLocation: %s\n%s\n" % (time, location, forecast))
 
     except LocationNotFoundError as e:
         e.print_error()
