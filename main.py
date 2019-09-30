@@ -45,7 +45,7 @@ def translate_text(text, translation):
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
     bot.reply_to(message, "Este bot pode lhe fornecer a previsão do tempo para diversos locais ao redor do mundo!")
-    print("Welcome message sent")
+    print("Welcome message sent\n")
 
 
 @bot.message_handler(commands=['tempo'])
@@ -61,7 +61,7 @@ def send_forecast(message):
                                                         min_temperature, max_temperature)
 
         bot.reply_to(message, "Tempo em %s:\n%s" % (location, forecast))
-        print("Forecast sent.\nLocation: %s\n%s" % (location, forecast))
+        print("Forecast sent\nLocation: %s\n%s\n" % (location, forecast))
 
     except LocationNotFoundError as e:
         e.print_error()
