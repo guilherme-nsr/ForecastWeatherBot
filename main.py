@@ -1,12 +1,15 @@
 import telebot
 import requests
-
 from exceptions.exceptions import LocationNotFoundError
 from util.time import Time
+from dotenv import load_dotenv
+import os
 
-BOT_TOKEN = "737147039:AAEFkaHm2H5HKCY0KUkfCwVz8Ldiqk-t4Dw"
-OPEN_WEATHER_API_KEY = "89d78c9a1488f4e270ff37e37d1e3f2e"
-YANDEX_TRANSLATE_API_KEY = "trnsl.1.1.20190923T193355Z.f61a8167c74b880b.66d43adba70f5c53842e65756137324109d9272e"
+load_dotenv(verbose=True)
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+OPEN_WEATHER_API_KEY = os.getenv("OPEN_WEATHER_API_KEY")
+YANDEX_TRANSLATE_API_KEY = os.getenv("YANDEX_TRANSLATE_API_KEY")
 
 OPEN_WEATHER_API_ENDPOINT = "http://api.openweathermap.org/data/2.5/weather"
 YANDEX_TRANSLATE_API_ENDPOINT = "https://translate.yandex.net/api/v1.5/tr.json/translate"
