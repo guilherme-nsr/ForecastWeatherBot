@@ -14,6 +14,8 @@ YANDEX_TRANSLATE_API_KEY = os.getenv("YANDEX_TRANSLATE_API_KEY")
 OPEN_WEATHER_API_ENDPOINT = "http://api.openweathermap.org/data/2.5/weather"
 YANDEX_TRANSLATE_API_ENDPOINT = "https://translate.yandex.net/api/v1.5/tr.json/translate"
 
+YANDEX_INFO = "Powered by Yandex.Translate\nhttp://translate.yandex.com/"
+
 bot = telebot.TeleBot(BOT_TOKEN)
 
 
@@ -66,7 +68,7 @@ def send_forecast(message):
                                                         translate_text(forecast_description, "en-pt"), temperature,
                                                         min_temperature, max_temperature)
 
-        bot.reply_to(message, "Tempo em %s:\n%s" % (location, forecast))
+        bot.reply_to(message, "Tempo em %s:\n%s\n\n%s" % (location, forecast, YANDEX_INFO))
 
         time = Time.get_time()
         print("%s - Forecast sent\nLocation: %s\n%s\n" % (time, location, forecast))
