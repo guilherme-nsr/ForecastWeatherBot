@@ -8,3 +8,5 @@ data and [Yandex](https://yandex.com/) translate API to translate the
 information to brazilian portuguese.
 
 [Powered by Yandex.Translate](http://translate.yandex.com/)
+
+Chat with the bot [here](https://telegram.me/hello0922bot).
